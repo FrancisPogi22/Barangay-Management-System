@@ -13,6 +13,7 @@ if (isset($_SESSION['role'])) {
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <?php
     if (!isset($_SESSION['role'])) {
@@ -23,6 +24,7 @@ if (isset($_SESSION['role'])) {
     }
     ?>
 </head>
+
 <body class="skin-black">
     <!-- header logo: style can be found in header.less -->
     <?php
@@ -48,9 +50,9 @@ if (isset($_SESSION['role'])) {
                 <!-- Request Certificate Button -->
                 <div class="box">
                     <div class="box-header">
-                        <div class="button-wrapper">
+                        <!-- <div class="button-wrapper">
                             <button class='btn btn-primary btn-sm requestCertificateBtn'>Add Certificate</button>
-                        </div>
+                        </div> -->
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active"><a data-toggle="tab" href="#new">New</a></li>
                             <li><a data-toggle="tab" href="#approved">Approved</a></li>
@@ -80,10 +82,10 @@ if (isset($_SESSION['role'])) {
                                             echo "<td>" . $row['businessAddress'] . "</td>";
                                             echo "<td>" . $row['typeOfBusiness'] . "</td>";
                                             echo "<td>" . $row['status'] . "</td>";
-                                            echo "<td>";
-                                            echo "<button class='btn btn-success btn-sm approveCertificateBtn' data-certificate-id='" . $row['id'] . "'>Approve</button>";
-                                            echo "<button class='btn btn-danger btn-sm disapproveCertificateBtn' data-certificate-id='" . $row['id'] . "'>Disapprove</button>";
-                                            echo "</td>";
+                                            // echo "<td>";
+                                            // echo "<button class='btn btn-success btn-sm approveCertificateBtn' data-certificate-id='" . $row['id'] . "'>Approve</button>";
+                                            // echo "<button class='btn btn-danger btn-sm disapproveCertificateBtn' data-certificate-id='" . $row['id'] . "'>Disapprove</button>";
+                                            // echo "</td>";
                                             echo "</tr>";
                                         }
                                         ?>
@@ -100,7 +102,7 @@ if (isset($_SESSION['role'])) {
                                             <th>Type of Business</th>
                                             <th>Status</th>
                                             <th>Certificate Amount</th>
-                                            <th>Action</th>
+                                            <!-- <th>Action</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -113,10 +115,10 @@ if (isset($_SESSION['role'])) {
                                             echo "<td>" . $row['typeOfBusiness'] . "</td>";
                                             echo "<td>" . $row['status'] . "</td>";
                                             echo "<td>" . $row['cert_amount'] . "</td>";
-                                            echo "<td>";
-                                            echo "<button class='btn btn-primary btn-sm editCertificateBtn' data-certificate-id='" . $row['id'] . "'>Edit</button>";
-                                            echo "<button class='btn btn-primary btn-sm generateCertificateBtn' data-certificate-id='" . $row['id'] . "'>Generate</button>";
-                                            echo "</td>";
+                                            // echo "<td>";
+                                            // echo "<button class='btn btn-primary btn-sm editCertificateBtn' data-certificate-id='" . $row['id'] . "'>Edit</button>";
+                                            // echo "<button class='btn btn-primary btn-sm generateCertificateBtn' data-certificate-id='" . $row['id'] . "'>Generate</button>";
+                                            // echo "</td>";
                                             echo "</tr>";
                                         }
                                         ?>
@@ -185,13 +187,18 @@ if (isset($_SESSION['role'])) {
                 </div>
                 <style>
                     .button-wrapper {
-                        margin-left: 10px; /* Adjust the margin value as needed */
-                        margin-top: 10px; /* Adjust the margin value as needed */
-                        margin-bottom: 10px; /* Adjust the margin value as needed */
+                        margin-left: 10px;
+                        /* Adjust the margin value as needed */
+                        margin-top: 10px;
+                        /* Adjust the margin value as needed */
+                        margin-bottom: 10px;
+                        /* Adjust the margin value as needed */
                     }
+
                     /* Adjust the size of the placeholders */
                     .form-control::placeholder {
-                        font-size: 14px; /* Change the font size as needed */
+                        font-size: 14px;
+                        /* Change the font size as needed */
                     }
                 </style>
 
@@ -215,7 +222,9 @@ if (isset($_SESSION['role'])) {
                 $.ajax({
                     type: "POST",
                     url: "delete_business_cert.php",
-                    data: { id: certificateId },
+                    data: {
+                        id: certificateId
+                    },
                     success: function(response) {
                         alert(response);
                         location.reload(); // Reload the page to update the table
@@ -226,39 +235,44 @@ if (isset($_SESSION['role'])) {
                 });
             });
         });
-           // Approve button click event
-           $(".approveCertificateBtn").click(function() {
-                            var certificateId = $(this).data("certificate-id");
-                            $.ajax({
-                                type: "POST",
-                                url: "approve_business_cert.php",
-                                data: { id: certificateId },
-                                success: function(response) {
-                                    alert(response);
-                                    location.reload(); // Reload the page to update the table
-                                },
-                                error: function(xhr, status, error) {
-                                    alert("Error approving certificate: " + error);
-                                }
-                            });
-                        });
+        // Approve button click event
+        $(".approveCertificateBtn").click(function() {
+            var certificateId = $(this).data("certificate-id");
+            $.ajax({
+                type: "POST",
+                url: "approve_business_cert.php",
+                data: {
+                    id: certificateId
+                },
+                success: function(response) {
+                    alert(response);
+                    location.reload(); // Reload the page to update the table
+                },
+                error: function(xhr, status, error) {
+                    alert("Error approving certificate: " + error);
+                }
+            });
+        });
 
-                        // Disapprove button click event
-                        $(".disapproveCertificateBtn").click(function() {
-                            var certificateId = $(this).data("certificate-id");
-                            $.ajax({
-                                type: "POST",
-                                url: "disapprove_business_cert.php",
-                                data: { id: certificateId },
-                                success: function(response) {
-                                    alert(response);
-                                    location.reload(); // Reload the page to update the table
-                                },
-                                error: function(xhr, status, error) {
-                                    alert("Error disapproving certificate: " + error);
-                                }
-                            });
-                        });
+        // Disapprove button click event
+        $(".disapproveCertificateBtn").click(function() {
+            var certificateId = $(this).data("certificate-id");
+            $.ajax({
+                type: "POST",
+                url: "disapprove_business_cert.php",
+                data: {
+                    id: certificateId
+                },
+                success: function(response) {
+                    alert(response);
+                    location.reload(); // Reload the page to update the table
+                },
+                error: function(xhr, status, error) {
+                    alert("Error disapproving certificate: " + error);
+                }
+            });
+        });
     </script>
 </body>
+
 </html>

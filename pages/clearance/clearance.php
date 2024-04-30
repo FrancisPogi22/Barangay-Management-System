@@ -117,20 +117,22 @@ if (isset($_SESSION['role'])) {
                                         <tr>
                                             <th>Name</th>
                                             <th>Age</th>
-                                            <th>Purpose</th>
                                             <th>Status</th>
+                                            <th>Certificate Amount</th>
+                                            <th>BC No.</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $result = mysqli_query($con, "SELECT id, CONCAT(fname, ' ', mname, ' ', lname) AS completename, age, purpose, status FROM clearance_cert WHERE status='New'");
+                                        $result = mysqli_query($con, "SELECT id, CONCAT(fname, ' ', mname, ' ', lname) AS completename, age, bcNo, cert_amount, status FROM clearance_cert WHERE status='New'");
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo "<tr>";
                                             echo "<td>" . $row['completename'] . "</td>";
                                             echo "<td>" . $row['age'] . "</td>";
-                                            echo "<td>" . $row['purpose'] . "</td>";
                                             echo "<td>" . $row['status'] . "</td>";
+                                            echo "<td>" . $row['cert_amount'] . "</td>";
+                                            echo "<td>" . $row['bcNo'] . "</td>";
                                             echo "<td>";
                                             echo "<button class='btn btn-success btn-sm approveCertificateBtn' data-certificate-id='" . $row['id'] . "'>Approve</button>";
                                             echo "<button class='btn btn-danger btn-sm disapproveCertificateBtn' data-certificate-id='" . $row['id'] . "'>Disapprove</button>";
@@ -148,22 +150,22 @@ if (isset($_SESSION['role'])) {
                                         <tr>
                                             <th>Name</th>
                                             <th>Age</th>
-                                            <th>Purpose</th>
                                             <th>Status</th>
                                             <th>Certificate Amount</th>
+                                            <th>BC No.</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $result = mysqli_query($con, "SELECT id, CONCAT(fname, ' ', mname, ' ', lname) AS completename, age, purpose, status, cert_amount FROM clearance_cert WHERE status='Approved'");
+                                        $result = mysqli_query($con, "SELECT id, CONCAT(fname, ' ', mname, ' ', lname) AS completename, age, status, bcNo, cert_amount FROM clearance_cert WHERE status='Approved'");
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo "<tr>";
                                             echo "<td>" . $row['completename'] . "</td>";
                                             echo "<td>" . $row['age'] . "</td>";
-                                            echo "<td>" . $row['purpose'] . "</td>";
                                             echo "<td>" . $row['status'] . "</td>";
                                             echo "<td>" . $row['cert_amount'] . "</td>";
+                                            echo "<td>" . $row['bcNo'] . "</td>";
                                             echo "<td>";
                                             echo "<button class='btn btn-primary btn-sm editCertificateBtn' data-certificate-id='" . $row['id'] . "' data-toggle='modal' data-target='#editCertificateModal'>Edit</button>";
                                             echo "<a type='button' href='generate_clearance.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm generateCertificateBtn' data-certificate-id='" . $row['id'] . "'>Generate</a>";
@@ -181,19 +183,22 @@ if (isset($_SESSION['role'])) {
                                         <tr>
                                             <th>Name</th>
                                             <th>Age</th>
-                                            <th>Purpose</th>
                                             <th>Status</th>
+                                            <th>Certificate Amount</th>
+                                            <th>BC No.</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $result = mysqli_query($con, "SELECT id, CONCAT(fname, ' ', mname, ' ', lname) AS completename, age, purpose, status FROM clearance_cert WHERE status='Disapproved'");
+                                        $result = mysqli_query($con, "SELECT id, CONCAT(fname, ' ', mname, ' ', lname) AS completename, age, bcNo, cert_amount, status FROM clearance_cert WHERE status='Disapproved'");
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo "<tr>";
                                             echo "<td>" . $row['completename'] . "</td>";
                                             echo "<td>" . $row['age'] . "</td>";
-                                            echo "<td>" . $row['purpose'] . "</td>";
                                             echo "<td>" . $row['status'] . "</td>";
+                                            echo "<td>" . $row['cert_amount'] . "</td>";
+                                            echo "<td>" . $row['bcNo'] . "</td>";
                                             echo "</tr>";
                                         }
                                         ?>

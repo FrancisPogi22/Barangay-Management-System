@@ -61,7 +61,7 @@ include('../head_css.php');
                 <div class="box">
                     <div class="box-header">
                         <div class="button-wrapper">
-                            <button class='btn btn-primary btn-sm requestCertificateBtn'>Request Clearance</button>
+                            <button class='btn btn-primary btn-sm requestCertificateBtn' data-toggle='modal' data-target='#requestModal'>Request Clearance</button>
                         </div>
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active"><a data-toggle="tab" href="#new">New</a></li>
@@ -192,7 +192,7 @@ include('../head_css.php');
                                         <label for="age">Age:</label>
                                         <input type="number" class="form-control" id="age" name="age" style="width: 80px;" placeholder="Age" required>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="purpose">Purpose:</label>
                                         <select class="form-control" id="purpose" name="purpose" required>
                                             <option value="Local Employment">Local Employment</option>
@@ -200,7 +200,7 @@ include('../head_css.php');
                                             <option value="School Requirement">School Requirement</option>
                                             <option value="Legal Purposes">Legal Purposes</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group" id="otherPurpose" style="display: none;">
                                         <label for="otherPurpose">Specify Purpose:</label>
                                         <input type="text" class="form-control" id="otherPurposeInput" name="otherPurpose" style="width: 200px;">
@@ -259,11 +259,6 @@ include('../head_css.php');
     ?>
     <script>
         $(document).ready(function() {
-            $(".requestCertificateBtn").click(function() {
-                // Display the modal for requesting certificate
-                $("#requestModal").modal("show");
-            });
-
             // Delete button click event
             $(".deleteCertificateBtn").click(function() {
                 var certificateId = $(this).data("certificate-id");

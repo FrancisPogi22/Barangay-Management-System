@@ -61,7 +61,7 @@ include('../head_css.php');
                 <div class="box">
                     <div class="box-header">
                         <div class="button-wrapper">
-                            <button class='btn btn-primary btn-sm requestCertificateBtn'>Request Certificate</button>
+                            <button class='btn btn-primary btn-sm requestCertificateBtn' data-toggle='modal' data-target='#requestModal'>Request Certificate</button>
                         </div>
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active"><a data-toggle="tab" href="#new">New</a></li>

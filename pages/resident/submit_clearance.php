@@ -10,12 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mname = $_POST['mname'];
     $lname = $_POST['lname'];
     $age = $_POST['age'];
-    $purpose = $_POST['purpose'];
+    // $purpose = $_POST['purpose'];
     $pickup = $_POST['pickup_date'];
 
 
     // Save data to the database
-    $query = "INSERT INTO clearance_cert (ownerId, fname, mname, lname, age, purpose, pickup_date, status) VALUES ('$id', '$fname', '$mname', '$lname', '$age', '$purpose', '$pickup', 'New')";
+    $query = "INSERT INTO clearance_cert (ownerId, fname, mname, lname, age, pickup_date, status) VALUES ('$id', '$fname', '$mname', '$lname', '$age', '$pickup', 'New')";
     mysqli_query($con, $query);
 
     // Redirect back to the original page
