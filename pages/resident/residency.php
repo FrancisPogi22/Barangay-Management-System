@@ -24,7 +24,7 @@ if ($result->num_rows == 0) {
 if (isset($_SESSION['role'])) {
     $role = $_SESSION['role'];
 
-    if ($role != 'Absentee') {
+    if ($role != 'Resident') {
         header('Location: ../../main/index.php');
     }
 }
