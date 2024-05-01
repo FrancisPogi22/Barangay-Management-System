@@ -138,12 +138,13 @@ if (isset($_SESSION['role'])) {
                                             <th>Recidency Year</th>
                                             <th>Status</th>
                                             <th>Certificate Amount</th>
+                                            <th>Amount</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $result = mysqli_query($con, "SELECT id, CONCAT(fname, ' ', mname, ' ', lname) AS completename, age, bday, purok, year_stayed, status, cert_amount FROM indigency_cert WHERE status='Approved'");
+                                        $result = mysqli_query($con, "SELECT id, CONCAT(fname, ' ', mname, ' ', lname) AS completename, age, bday, purok, year_stayed, status, amount, cert_amount FROM indigency_cert WHERE status='Approved'");
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo "<tr>";
                                             echo "<td>" . $row['completename'] . "</td>";
@@ -153,6 +154,7 @@ if (isset($_SESSION['role'])) {
                                             echo "<td>" . $row['year_stayed'] . "</td>";
                                             echo "<td>" . $row['status'] . "</td>";
                                             echo "<td>" . $row['cert_amount'] . "</td>";
+                                            echo "<td>" . $row['amount'] . "</td>";
                                             echo "<td>";
                                             echo "<button class='btn btn-primary btn-sm editCertificateBtn' data-certificate-id='" . $row['id'] . "' data-toggle='modal' data-target='#editCertificateModal'>Approve</button>";
                                             echo "<a type='button' href='generate_indigency.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm generateCertificateBtn' data-certificate-id='" . $row['id'] . "'>Generate</a>";

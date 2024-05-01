@@ -81,7 +81,7 @@ include "../connection.php";
 
 $id = $_GET['id'];
 
-$query = "SELECT c.*, t.barangay FROM clearance_cert as c inner join tblresident as t on t.id = c.resident_id where c.id = " . $id;
+$query = "SELECT * FROM clearance_cert where id = " . $id;
 $result = mysqli_query($con, $query);
 
 

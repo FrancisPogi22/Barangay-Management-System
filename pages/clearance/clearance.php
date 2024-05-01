@@ -242,7 +242,13 @@ if (isset($_SESSION['role'])) {
                                             // Populate the select dropdown with resident names and ages
                                             if ($result->num_rows > 0) {
                                                 while ($row = $result->fetch_assoc()) {
-                                                    echo "<option value='" . $row["resident_id"] . "|" . $row["age"] . "'>" . $row["fname"] . " " . $row["mname"] . " " . $row["lname"] . " (" . $row["age"] . " years old)" . "</option>";
+                                                    echo "<option value='" . $row["resident_id"] . "' 
+                                                        data-id='" . htmlspecialchars($row["resident_id"], ENT_QUOTES) . "' 
+                                                        data-fname='" . htmlspecialchars($row["fname"], ENT_QUOTES) . "' 
+                                                        data-mname='" . htmlspecialchars($row["mname"], ENT_QUOTES) . "' 
+                                                        data-lname='" . htmlspecialchars($row["lname"], ENT_QUOTES) . "',
+                                                        data-age='" . $row["age"] . "'>"
+                                                        . $row["fname"] . " " . $row["mname"] . " " . $row["lname"] . " (" . $row["age"] . " years old)</option>";
                                                 }
                                             }
 
@@ -252,6 +258,22 @@ if (isset($_SESSION['role'])) {
                                             ?>
                                         </select>
                                     </div>
+                                    <div class="form-group" hidden>
+                                        <label for="fname">First Name:</label>
+                                        <input type="text" class="form-control" id="fname" name="fname" style="width: 200px;" placeholder="First Name">
+                                    </div>
+                                    <div class="form-group" hidden>
+                                        <label for="mname">Middle Initial:</label>
+                                        <input type="text" class="form-control" id="mname" name="mname" style="width: 200px;" placeholder="Middle Initial">
+                                    </div>
+                                    <div class="form-group" hidden>
+                                        <label for="lname">Last Name:</label>
+                                        <input type="text" class="form-control" id="lname" name="lname" style="width: 200px;" placeholder="Last Name">
+                                    </div>
+                                    <div class="form-group" hidden>
+                                        <input type="text" class="form-control" id="age" name="age" style="width: 80px;" placeholder="Age">
+                                    </div>
+                                    <input type="number" name="ownerId" id="ownerId" hidden>
                                     <div class="form-group">
                                         <label for="status">Status:</label>
                                         <input type="text" class="form-control" name="status" id="status" style="width: 150px;" value="Walk-in" readonly>
@@ -291,7 +313,7 @@ if (isset($_SESSION['role'])) {
                             <input type="text" class="form-control" id="bcno" name="bcno" style="width: 200px;" placeholder="BC NO." required>
                         </div>
                         <div class="form-group">
-                            <label for="mname">Amount:</label>
+                            <label for="amount">Amount:</label>
                             <input type="text" class="form-control" id="amount" name="amount" style="width: 200px;" placeholder="Amount" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -311,9 +333,6 @@ if (isset($_SESSION['role'])) {
             $(".editCertificateBtn").click(function() {
                 $('#requestId').val($(this).data('certificate-id'));
             });
-
-            // Submit form data when the submit button is clicked
-
 
             // Delete button click event
             $(".deleteCertificateBtn").click(function() {
@@ -370,6 +389,28 @@ if (isset($_SESSION['role'])) {
                         alert("Error disapproving certificate: " + error);
                     }
                 });
+            });
+
+            let residentDropdown = document.getElementById('residentName');
+            let fnameInput = $('#fname');
+            let mnameInput = $('#mname');
+            let lnameInput = $('#lname');
+            let ageInput = $('#age');
+            let idInput = $('#ownerId');
+
+            residentDropdown.addEventListener('change', function() {
+                let selectedOption = this.options[this.selectedIndex];
+                let fname = selectedOption.getAttribute('data-fname');
+                let mname = selectedOption.getAttribute('data-mname');
+                let lname = selectedOption.getAttribute('data-lname');
+                let age = selectedOption.getAttribute('data-age');
+                let id = selectedOption.getAttribute('data-id');
+
+                fnameInput.val(fname ? fname : '');
+                mnameInput.val(mname ? mname : '');
+                lnameInput.val(lname ? lname : '');
+                ageInput.val(age ? age : '');
+                idInput.val(id ? id : '');
             });
         });
     </script>
