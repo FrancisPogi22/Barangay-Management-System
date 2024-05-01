@@ -103,7 +103,7 @@ if (!isset($_SESSION['role'])) {
                                         <span class="info-box-text">Total Clearance</span>
                                         <span class="info-box-number">
                                             <?php
-                                            $q = mysqli_query($con, "SELECT * from tblclearance where status = 'Approved' ");
+                                            $q = mysqli_query($con, "SELECT * from clearance_cert where status = 'Approved' ");
                                             $num_rows = mysqli_num_rows($q);
                                             echo $num_rows;
                                             ?>
@@ -123,7 +123,7 @@ if (!isset($_SESSION['role'])) {
                                         <span class="info-box-text">Total Permit</span>
                                         <span class="info-box-number">
                                             <?php
-                                            $q = mysqli_query($con, "SELECT * from tblpermit where status = 'Approved' ");
+                                            $q = mysqli_query($con, "SELECT * from permit_re where status = 'Approved' ");
                                             $num_rows = mysqli_num_rows($q);
                                             echo $num_rows;
                                             ?>

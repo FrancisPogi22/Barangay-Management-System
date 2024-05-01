@@ -39,7 +39,7 @@
                         <!-- left column -->
                             <div class="box">
                                 <div class="box-header">
-                                    <div style="padding:10px;">
+                                    <!-- <div style="padding:10px;">
                                         
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Household</button>  
                                         
@@ -52,7 +52,7 @@
                                             }
                                         ?>
                                 
-                                    </div>                                
+                                    </div>                                 -->
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
                                 <form method="post">
@@ -89,7 +89,7 @@
                                                         <td>'.$row['hzone'].'</td>
                                                         <td>'.$row['totalhousehold'].'</td>
                                                         <td>'.$row['hname'].'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['hid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
+                                                        // <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['hid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
 
@@ -107,7 +107,7 @@
                                                         <td>'.$row['hzone'].'</td>
                                                         <td>'.$row['totalhousehold'].'</td>
                                                         <td>'.$row['hname'].'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['hid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
+                                                        // <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['hid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
 

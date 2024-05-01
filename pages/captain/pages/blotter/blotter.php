@@ -49,7 +49,7 @@ if (!isset($_SESSION['role'])) {
                         <!-- left column -->
                         <div class="box">
                             <div class="box-header">
-                                <div style="padding:10px;">
+                                <!-- <div style="padding:10px;">
 
                                     <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Blotter</button>
                                     <?php
@@ -60,7 +60,7 @@ if (!isset($_SESSION['role'])) {
                                     }
                                     ?>
 
-                                </div>
+                                </div> -->
                             </div><!-- /.box-header -->
                             <div class="box-body table-responsive">
                                 <form method="post">
@@ -81,7 +81,6 @@ if (!isset($_SESSION['role'])) {
                                                 <th>Action Taken</th>
                                                 <th>Status</th>
                                                 <th>Location of Incidence</th>
-                                                <th style="width: 40px !important;">Option</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -100,7 +99,6 @@ if (!isset($_SESSION['role'])) {
                                                         <td>' . $row['actionTaken'] . '</td>
                                                         <td>' . $row['sStatus'] . '</td>
                                                         <td>' . $row['locationOfIncidence'] . '</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal' . $row['bid'] . '" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
 
@@ -118,7 +116,6 @@ if (!isset($_SESSION['role'])) {
                                                         <td>' . $row['actionTaken'] . '</td>
                                                         <td>' . $row['sStatus'] . '</td>
                                                         <td>' . $row['locationOfIncidence'] . '</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal' . $row['bid'] . '" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
 
